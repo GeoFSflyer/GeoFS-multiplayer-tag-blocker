@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         GeoFS Tag Filter Cycle
 // @namespace    geofs-local
-// @version      1.1
-// @description  Q cycles: hide all tags -> hide only Foo tags -> show all tags
+// @version      1.2
+// @description  Start with all tags hidden. Q cycles: hide Foo tags -> show all tags -> hide all tags
 // @match        https://www.geo-fs.com/*
 // @match        https://geo-fs.com/*
 // @match        https://legacy.geo-fs.com/*
@@ -19,7 +19,7 @@
     SHOW_ALL: 2
   };
 
-  let mode = MODES.SHOW_ALL;
+  let mode = MODES.HIDE_ALL;
 
   function isTypingTarget(el) {
     if (!el) return false;
@@ -156,7 +156,7 @@
     });
 
     applyMode();
-    console.log('[GeoFS] Q hotkey loaded: show all -> hide all -> hide Foo -> repeat');
+    console.log('[GeoFS] Q hotkey loaded: start = hide all, then hide Foo, then show all');
     return true;
   }
 
